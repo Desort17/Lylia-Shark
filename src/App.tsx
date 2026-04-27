@@ -42,12 +42,12 @@ export default function App() {
     };
   }, [isPlaying]);
 
-  // Background audio - Emotional Romantic Piano
+  // Background audio - Local Romantic Song
   useEffect(() => {
     const audio = new Audio();
-    audio.src = 'https://www.chosic.com/wp-content/uploads/2021/04/Beautiful-Piano.mp3';
+    audio.src = '/romantic.mp3';
     audio.loop = true;
-    audio.volume = 0.4;
+    audio.volume = 0.5;
     audio.crossOrigin = 'anonymous';
     audioRef.current = audio;
 
@@ -574,7 +574,7 @@ function Scene4Animation({ onFinish, sharkImg, lyliaImg }: { onFinish: () => voi
           <div className="relative group">
             <div className="absolute inset-0 bg-white/30 rounded-full blur-2xl scale-125 group-hover:bg-white/50 transition-all" />
             <img 
-              src={sharkImg || "input_file_1.png"} 
+              src={sharkImg || "/shark.png"} 
               alt="Shark"
               className="w-32 h-32 md:w-56 md:h-56 rounded-full border-4 border-white/60 object-cover shadow-[0_0_60px_rgba(255,255,255,0.3)] relative z-10"
               referrerPolicy="no-referrer"
@@ -632,7 +632,7 @@ function Scene4Animation({ onFinish, sharkImg, lyliaImg }: { onFinish: () => voi
           <div className="relative group">
             <div className="absolute inset-0 bg-rose-500/30 rounded-full blur-2xl scale-125 group-hover:bg-rose-500/50 transition-all" />
             <img 
-              src={lyliaImg || "input_file_0.png"} 
+              src={lyliaImg || "/lylia.png"} 
               alt="Lylia"
               className="w-32 h-32 md:w-56 md:h-56 rounded-full border-4 border-rose-300/60 object-cover shadow-[0_0_60px_rgba(225,29,72,0.3)] relative z-10"
               referrerPolicy="no-referrer"
