@@ -219,8 +219,9 @@ function Scene1Glow({
           <p className="text-right text-[10px] md:text-xs opacity-60 uppercase tracking-widest">— A Story Written in the Stars</p>
         </div>
         <div className="text-center md:text-right">
-          <h2 className="text-5xl md:text-8xl font-script text-rose-200 mb-2 drop-shadow-[0_0_15px_rgba(255,192,203,0.5)]">Happy Birthday, Lylia</h2>
-          <p className="text-rose-100/60 tracking-[0.4em] uppercase text-[10px] md:text-sm font-sans">Every moment with you is a masterpiece</p>
+          <h2 className="text-5xl md:text-8xl font-script text-rose-200 mb-2 drop-shadow-[0_0_15px_rgba(255,192,203,0.5)]">Happy Birthday</h2>
+          <h3 className="text-4xl md:text-7xl font-romantic text-white drop-shadow-lg">Lylia</h3>
+          <p className="text-rose-100/60 tracking-[0.4em] uppercase text-[10px] md:text-sm font-sans mt-4">Every moment with you is a masterpiece</p>
         </div>
       </div>
 
@@ -240,10 +241,10 @@ function Scene1Glow({
                  </div>
                )}
                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs md:text-sm text-white font-bold uppercase tracking-widest transition-opacity text-center px-4">
-                 Upload Your Photo (Shark)
+                 Shark
                </div>
              </div>
-             <p className="text-sm md:text-lg uppercase tracking-[0.3em] text-white font-bold font-sans drop-shadow-sm">Shark</p>
+             <p className="text-xl md:text-3xl uppercase tracking-[0.3em] text-white font-bold font-script drop-shadow-sm">Shark</p>
              <input type="file" ref={sharkInputRef} onChange={(e) => handleImageUpload(e, 'shark')} className="hidden" accept="image/*" />
           </div>
 
@@ -263,13 +264,14 @@ function Scene1Glow({
                  </div>
                )}
                <div className="absolute inset-0 bg-rose-900/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs md:text-sm text-white font-bold uppercase tracking-widest transition-opacity text-center px-4">
-                 Upload Her Photo (Lylia)
+                 Lylia
                </div>
              </div>
-             <p className="text-sm md:text-lg uppercase tracking-[0.3em] text-rose-300 font-bold font-sans drop-shadow-sm">Lylia</p>
+             <p className="text-xl md:text-3xl uppercase tracking-[0.3em] text-rose-300 font-bold font-script drop-shadow-sm">Lylia</p>
              <input type="file" ref={lyliaInputRef} onChange={(e) => handleImageUpload(e, 'lylia')} className="hidden" accept="image/*" />
           </div>
         </div>
+
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -342,24 +344,51 @@ function Scene2Door({ onFinish }: { onFinish: () => void }) {
       <Balloons />
       
       {/* Royal Door Frame Decoration */}
-      <div className="absolute inset-0 border-[30px] border-yellow-700/20 pointer-events-none z-50 pointer-events-none" />
+      <div className="absolute inset-0 border-[40px] border-yellow-800/20 pointer-events-none z-50 overflow-hidden">
+        <div className="absolute inset-0 border-[2px] border-yellow-400/30 m-4" />
+        {/* Flower Corners */}
+        <div className="absolute top-4 left-4 text-5xl drop-shadow-lg">🌸</div>
+        <div className="absolute top-4 right-4 text-5xl drop-shadow-lg scale-x-[-1]">🌸</div>
+        <div className="absolute bottom-4 left-4 text-5xl drop-shadow-lg">🌹</div>
+        <div className="absolute bottom-4 right-4 text-5xl drop-shadow-lg scale-x-[-1]">🌹</div>
+        
+        {/* Floating Hearts in frame */}
+        <motion.div 
+          animate={{ y: [-10, 10, -10], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity }}
+          className="absolute top-1/2 left-2 text-2xl"
+        >❤️</motion.div>
+        <motion.div 
+          animate={{ y: [10, -10, 10], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+          className="absolute top-1/2 right-2 text-2xl"
+        >❤️</motion.div>
+      </div>
 
       {/* Left Door */}
       <motion.div 
         initial={{ rotateY: 0 }}
-        animate={{ rotateY: -120 }}
-        transition={{ duration: 3, ease: "easeInOut", delay: 1 }}
-        className="w-1/2 h-full bg-gradient-to-l from-rose-950 to-rose-900 border-r-8 border-yellow-500/50 origin-left relative flex items-center justify-end shadow-2xl"
+        animate={{ rotateY: -125 }}
+        transition={{ duration: 4, ease: [0.4, 0, 0.2, 1], delay: 1 }}
+        className="w-1/2 h-full bg-gradient-to-l from-rose-950 via-[#2d0a15] to-rose-950 border-r-12 border-yellow-600/60 origin-left relative flex items-center justify-end shadow-[20px_0_50px_rgba(0,0,0,0.8)]"
       >
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/vintage-wallpaper.png')] opacity-20" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-12">
-            <div className="p-10 rounded-full border-8 border-yellow-500/30 flex items-center justify-center bg-rose-900/40 backdrop-blur-sm">
-              <Lock className="w-24 h-24 text-yellow-500/60 drop-shadow-[0_0_15px_rgba(234,179,8,0.5)]" />
-            </div>
-            <div className="flex gap-4">
-               <span className="text-5xl">🌸</span>
-               <span className="text-5xl">❤️</span>
-               <span className="text-5xl">🌸</span>
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/royal-lineage.png')] opacity-20" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-16">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="relative p-12 rounded-full border-[10px] border-yellow-500/30 bg-rose-950/40 backdrop-blur-md shadow-[0_0_60px_rgba(234,179,8,0.2)]"
+            >
+              <Lock className="w-28 h-28 text-yellow-500/80 drop-shadow-[0_0_20px_rgba(234,179,8,0.6)]" />
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute -top-6 -left-6 text-4xl">🌸</motion.div>
+              <motion.div animate={{ rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute -bottom-6 -right-6 text-4xl">🌹</motion.div>
+            </motion.div>
+            
+            <div className="text-center">
+              <h3 className="font-script text-white text-5xl md:text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mb-4">Shark</h3>
+              <div className="flex gap-4 justify-center">
+                 <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} className="text-4xl text-rose-400">❤️</motion.span>
+                 <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.5 }} className="text-4xl text-rose-400">❤️</motion.span>
+              </div>
             </div>
         </div>
       </motion.div>
@@ -367,19 +396,27 @@ function Scene2Door({ onFinish }: { onFinish: () => void }) {
       {/* Right Door */}
       <motion.div 
         initial={{ rotateY: 0 }}
-        animate={{ rotateY: 120 }}
-        transition={{ duration: 3, ease: "easeInOut", delay: 1 }}
-        className="w-1/2 h-full bg-gradient-to-r from-rose-950 to-rose-900 border-l-8 border-yellow-500/50 origin-right relative flex items-center justify-start shadow-2xl"
+        animate={{ rotateY: 125 }}
+        transition={{ duration: 4, ease: [0.4, 0, 0.2, 1], delay: 1 }}
+        className="w-1/2 h-full bg-gradient-to-r from-rose-950 via-[#2d0a15] to-rose-950 border-l-12 border-yellow-600/60 origin-right relative flex items-center justify-start shadow-[-20px_0_50px_rgba(0,0,0,0.8)]"
       >
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/vintage-wallpaper.png')] opacity-20" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-12">
-            <div className="p-10 rounded-full border-8 border-yellow-500/30 flex items-center justify-center bg-rose-900/40 backdrop-blur-sm">
-              <Unlock className="w-24 h-24 text-yellow-500 drop-shadow-[0_0_25px_rgba(234,179,8,0.8)]" />
-            </div>
-            <div className="flex gap-4">
-               <span className="text-5xl">🎈</span>
-               <span className="text-5xl">❤️</span>
-               <span className="text-5xl">🎈</span>
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/royal-lineage.png')] opacity-20" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-16">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="relative p-12 rounded-full border-[10px] border-yellow-500/30 bg-rose-950/40 backdrop-blur-md shadow-[0_0_60px_rgba(234,179,8,0.2)]"
+            >
+              <Unlock className="w-28 h-28 text-yellow-500 drop-shadow-[0_0_30px_rgba(234,179,8,0.8)]" />
+              <motion.div animate={{ rotate: -360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute -top-6 -right-6 text-4xl">🌸</motion.div>
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute -bottom-6 -left-6 text-4xl">🌹</motion.div>
+            </motion.div>
+
+            <div className="text-center">
+              <h3 className="font-script text-white text-5xl md:text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mb-4">Lylia</h3>
+              <div className="flex gap-4 justify-center">
+                 <motion.span animate={{ y: [0, -20, 0] }} transition={{ duration: 3, repeat: Infinity }} className="text-4xl">🎈</motion.span>
+                 <motion.span animate={{ y: [0, -20, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 1.5 }} className="text-4xl">🎈</motion.span>
+              </div>
             </div>
         </div>
       </motion.div>
