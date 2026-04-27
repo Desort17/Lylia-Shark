@@ -19,9 +19,9 @@ export default function App() {
   const [stage, setStage] = useState<ExperienceStage>(ExperienceStage.SCENE_1_GLOW);
   const [isPlaying, setIsPlaying] = useState(false);
   
-  // Custom images
-  const [sharkImg, setSharkImg] = useState<string | null>(localStorage.getItem('shark_img'));
-  const [lyliaImg, setLyliaImg] = useState<string | null>(localStorage.getItem('lylia_img'));
+  // Custom images (defaults set to user-provided photos)
+  const [sharkImg, setSharkImg] = useState<string | null>(localStorage.getItem('shark_img') || 'input_file_1.png');
+  const [lyliaImg, setLyliaImg] = useState<string | null>(localStorage.getItem('lylia_img') || 'input_file_0.png');
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -279,10 +279,15 @@ function Scene1Glow({
           transition={{ delay: 0.5 }}
           className="relative text-center px-4"
         >
-          <h1 className="text-4xl md:text-[8rem] font-script text-white mb-4 text-glow leading-tight font-bold drop-shadow-2xl">
+          <div className="flex items-center justify-center gap-4 mb-4">
+             <div className="w-12 h-0.5 bg-rose-400/50" />
+             <p className="font-sans text-rose-300 tracking-[0.5em] text-xs md:text-sm uppercase font-bold">Forever Together</p>
+             <div className="w-12 h-0.5 bg-rose-400/50" />
+          </div>
+          <h1 className="text-4xl md:text-[8.5rem] font-script text-white mb-4 text-glow leading-tight font-bold drop-shadow-2xl">
             Shark & Lylia
           </h1>
-          <p className="font-romantic text-2xl md:text-5xl text-rose-200 italic opacity-90 drop-shadow-lg">A Love Written in the Stars</p>
+          <p className="font-romantic text-2xl md:text-5xl text-rose-200 italic opacity-90 drop-shadow-lg">A Love Written in the Stars Forever</p>
         </motion.div>
 
         <motion.button
@@ -412,7 +417,7 @@ function Scene2Door({ onFinish }: { onFinish: () => void }) {
             </motion.div>
 
             <div className="text-center">
-              <h3 className="font-script text-white text-5xl md:text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mb-4">Lylia</h3>
+              <h3 className="font-script text-white text-5xl md:text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mb-4">Forever Lylia</h3>
               <div className="flex gap-4 justify-center">
                  <motion.span animate={{ y: [0, -20, 0] }} transition={{ duration: 3, repeat: Infinity }} className="text-4xl">🎈</motion.span>
                  <motion.span animate={{ y: [0, -20, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 1.5 }} className="text-4xl">🎈</motion.span>
@@ -880,61 +885,76 @@ function Scene8Finale() {
     <motion.div 
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="text-center z-10 px-6 py-12 relative overflow-hidden"
+      className="text-center z-10 px-6 py-12 relative overflow-hidden bg-black/40 backdrop-blur-2xl rounded-[50px] border border-rose-500/30 shadow-[0_0_150px_rgba(225,29,72,0.4)] max-w-2xl mx-auto"
     >
       <FlowerRain />
-      <div className="relative mb-12">
+      <div className="relative mb-8">
         <motion.div
           animate={{ 
-            scale: [1, 1.15, 1], 
-            rotate: [0, 8, -8, 0],
-            filter: ["drop-shadow(0 0 20px #e11d48)", "drop-shadow(0 0 60px #e11d48)", "drop-shadow(0 0 20px #e11d48)"]
+            scale: [1, 1.2, 1], 
+            rotate: [0, 10, -10, 0],
+            filter: ["drop-shadow(0 0 20px #e11d48)", "drop-shadow(0 0 80px #e11d48)", "drop-shadow(0 0 20px #e11d48)"]
           }}
           transition={{ 
             repeat: Infinity, 
-            duration: 5,
+            duration: 6,
             ease: "easeInOut"
           }}
         >
-          <Heart className="w-56 h-56 text-rose-600 mx-auto fill-rose-600/20" />
+          <Heart className="w-48 h-48 md:w-64 md:h-64 text-rose-600 mx-auto fill-rose-600/30" />
         </motion.div>
         <div className="absolute inset-0 flex items-center justify-center">
-           <Sparkles className="text-rose-100 w-16 h-16 animate-ping" />
+           <Sparkles className="text-rose-100 w-20 h-20 animate-ping" />
         </div>
       </div>
       
+      <div className="flex items-center justify-center gap-6 mb-8">
+         <span className="text-3xl md:text-5xl font-script text-white drop-shadow-lg">Shark</span>
+         <span className="text-4xl text-rose-500 animate-pulse">❤️</span>
+         <span className="text-3xl md:text-5xl font-script text-rose-200 drop-shadow-lg">Lylia</span>
+      </div>
+
       <motion.h1 
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="text-7xl md:text-9xl font-script text-rose-200 mb-8 drop-shadow-[0_0_20px_rgba(255,192,203,0.5)] z-10"
+        className="text-5xl md:text-8xl font-script text-rose-100 mb-8 drop-shadow-[0_0_30px_rgba(255,192,203,0.6)] z-10"
       >
-        I Love You, Lylia
+        Forever & Always
       </motion.h1>
       
       <motion.p 
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1 }}
-        className="text-3xl md:text-5xl font-romantic text-rose-400 mb-16 font-bold z-10"
+        className="text-2xl md:text-4xl font-romantic text-rose-300 mb-12 font-bold z-10 italic"
       >
-        Forever yours, Your Shark 🦈❤️
+        "In this life and every other, it's always been you."
       </motion.p>
+      
+      <div className="flex flex-col gap-4 mb-10">
+        <p className="text-white/40 text-xs md:text-sm tracking-[0.5em] uppercase">The Legend of us continues</p>
+        <p className="text-rose-400 font-bold text-3xl md:text-5xl font-script">I Love You, Lylia</p>
+      </div>
 
-      <div className="flex flex-wrap gap-6 justify-center">
+      <div className="flex flex-wrap gap-4 justify-center">
         {['Eternity', 'Devotion', 'Passion', 'Destiny'].map((word, i) => (
           <motion.div
             key={word}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 1.5 + (i * 0.2) }}
-            className="px-8 py-5 glass-card border-white/20 flex flex-col items-center min-w-[150px]"
+            className="px-6 py-4 glass-card border-white/10 flex flex-col items-center min-w-[120px] bg-white/5"
           >
-            <Heart className="w-8 h-8 text-rose-500 mb-2 fill-rose-500/20" />
-            <span className="text-xs uppercase font-bold tracking-[0.3em] text-rose-200/60">{word}</span>
+            <Heart className="w-6 h-6 text-rose-500 mb-1 fill-rose-500/10" />
+            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-rose-200/50">{word}</span>
           </motion.div>
         ))}
       </div>
+      
+      <p className="text-white/40 text-[10px] md:text-xs mt-12 italic border-t border-white/10 pt-8">
+        Forever yours, Your Shark 🦈❤️
+      </p>
     </motion.div>
   );
 }
