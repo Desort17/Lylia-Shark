@@ -19,9 +19,9 @@ export default function App() {
   const [stage, setStage] = useState<ExperienceStage>(ExperienceStage.SCENE_1_GLOW);
   const [isPlaying, setIsPlaying] = useState(false);
   
-  // Custom images (defaults set to user-provided photos)
-  const [sharkImg, setSharkImg] = useState<string | null>(localStorage.getItem('shark_img') || 'input_file_1.png');
-  const [lyliaImg, setLyliaImg] = useState<string | null>(localStorage.getItem('lylia_img') || 'input_file_0.png');
+  // Custom images (defaults set to standard public assets)
+  const [sharkImg, setSharkImg] = useState<string | null>(localStorage.getItem('shark_img') || '/shark.png');
+  const [lyliaImg, setLyliaImg] = useState<string | null>(localStorage.getItem('lylia_img') || '/lylia.png');
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
